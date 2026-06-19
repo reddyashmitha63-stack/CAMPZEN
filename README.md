@@ -43,7 +43,7 @@ A Smart Campus Utility & Interaction Platform built using Flask, MySQL, HTML, CS
 ![Dashboard](screenshots/dashboard.png)
 
 ### Classroom & Lab Booking
-![Booking](screenshots/booking.png)
+![Booking](screenshots/classroomresourcebooking.png)
 
 ### Smart Canteen
 ![Canteen](screenshots/canteen.png)
