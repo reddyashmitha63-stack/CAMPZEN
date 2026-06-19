@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CAMPZEN Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header class="header">
+        <h2>CAMPZEN Dashboard</h2>
+        <p>Welcome to Smart Campus Platform</p>
+    </header>
+    <section class="dashboard">
+        <a href="{{ url_for('booking_page') }}" class="card">
+            Classroom Resource Booking
+        </a>
+        <a href="{{ url_for('feedback') }}" class="card">
+            Anonymous Feedback
+        </a>
+         <a href="{{ url_for('canteen') }}" class="card">
+            Smart Canteen
+        </a>
+         <a href="{{ url_for('forum') }}" class="card">
+            Discussion and Query Forum
+        </a>
+        <a href="{{ url_for('lost_found') }}" class="card">
+            Lost and Found Hub
+        </a>
+        <a href="{{ url_for('notice') }}" class="card">
+            Digital Notice Board
+        </a>
+    </section>
+</body>
+</html>

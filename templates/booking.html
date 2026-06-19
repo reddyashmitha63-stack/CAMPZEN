@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classroom & Lab Booking | CAMPZEN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="header">
+    <h2>Classroom & Lab Booking</h2>
+    <p>Select Date, Time Slot and Resource</p>
+</header>
+
+<section class="dashboard">
+
+    <div class="card">
+
+        <form action="/booking" method="POST" class="booking-form">
+
+            <label>Select Date</label>
+            <input type="date" name="date" required>
+
+            <label>Select Time Slot</label>
+            <select name="time" required>
+                <option value="">-- Choose Time Slot --</option>
+                <option>9:00 AM – 10:00 AM</option>
+                <option>10:00 AM – 11:00 AM</option>
+                <option>11:00 AM – 12:00 PM</option>
+                <option>2:00 PM – 3:00 PM</option>
+                <option>3:00 PM – 4:00 PM</option>
+            </select>
+
+            <label>Select Classroom</label>
+            <select name="classroom">
+                <option value="">-- Available Classrooms --</option>
+                <option>A101</option>
+                <option>A102</option>
+                <option>B201</option>
+            </select>
+
+            <label>OR Select Lab</label>
+            <select name="lab">
+                <option value="">-- Available Labs --</option>
+                <option>Computer Lab 1</option>
+                <option>Computer Lab 2</option>
+                <option>Computer Lab 3</option>
+            </select>
+
+            <button type="submit" class="cart-btn">Book Slot</button>
+
+        </form>
+
+        {% if message %}
+            <h3 style="color: {% if message == 'Booking successful!' %}green{% else %}red{% endif %};">
+                {{ message }}
+            </h3>
+        {% endif %}
+
+    </div>
+
+    {% if bookings %}
+    <div class="card" style="margin-top:20px;">
+        <h3>Your Bookings</h3>
+
+        {% for booking in bookings %}
+            <div style="margin-bottom:15px; border-bottom:1px solid #ccc; padding-bottom:10px;">
+                <p><strong>Booking ID:</strong> {{ booking.id }}</p>
+                <p><strong>Resource:</strong> {{ booking.resource }}</p>
+                <p><strong>Date:</strong> {{ booking.date }}</p>
+                <p><strong>Time:</strong> {{ booking.time_slot }}</p>
+            </div>
+        {% endfor %}
+
+    </div>
+    {% endif %}
+
+</section>
+
+</body>
+</html>

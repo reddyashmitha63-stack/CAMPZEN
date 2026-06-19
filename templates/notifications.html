@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notifications | CAMPZEN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='notification.css') }}">
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="bell" onclick="toggleNotifications()">
+            🔔
+            {% if notifications|length > 0 %}
+                <span class="count">{{ notifications|length }}</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Notification Dropdown -->
+    <div class="notification-box" id="notificationBox">
+
+        {% if notifications|length == 0 %}
+            <div class="notification-item">
+                No notifications yet.
+            </div>
+        {% else %}
+            {% for note in notifications %}
+            <div class="notification-item">
+                <div>{{ note.message }}</div>
+                <div class="notification-time">{{ note.created_at }}</div>
+            </div>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+
+<script>
+    function toggleNotifications() {
+        var box = document.getElementById("notificationBox");
+
+        if (box.style.display === "block") {
+            box.style.display = "none";
+        } else {
+            box.style.display = "block";
+        }
+    }
+
+    // Close dropdown when clicking outside
+    window.onclick = function(event) {
+        if (!event.target.closest('.bell')) {
+            document.getElementById("notificationBox").style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>

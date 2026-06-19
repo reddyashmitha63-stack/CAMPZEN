@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CAMPZEN Forum</title>
+    <!-- ADD THIS LINE -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Discussion & Query Forum</h2>
+
+    <!-- Post Question -->
+    <div class="card">
+        <h3>Post a Question</h3>
+        <form method="POST" action="/add_question">
+            <textarea name="question" rows="3" required></textarea>
+            <button type="submit">Post</button>
+        </form>
+    </div>
+
+    <!-- Display Questions -->
+    {% for q in questions %}
+    <div class="card">
+        <p><strong>Student:</strong> {{ q.question }}</p>
+        <small>{{ q.created_at }}</small>
+
+        <!-- Replies -->
+        {% for r in q.replies %}
+        <div class="reply">
+            <strong>Reply:</strong> {{ r.reply }}
+            <br>
+            <small>{{ r.created_at }}</small>
+        </div>
+        {% endfor %}
+
+        <!-- Add Reply -->
+        <form method="POST" action="/add_reply/{{ q.id }}">
+            <textarea name="reply" rows="2" placeholder="Write a reply..." required></textarea>
+            <button type="submit">Reply</button>
+        </form>
+    </div>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

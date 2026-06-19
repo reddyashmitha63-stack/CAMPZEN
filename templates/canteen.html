@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Canteen | CAMPZEN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="header">
+    <h2>🍽 Smart Canteen</h2>    
+</header>
+
+<form action="/place_order" method="POST">
+
+<section class="dashboard">
+
+    <div class="card">
+        <img src="{{ url_for('static', filename='idli1.webp') }}" class="food-img">
+        <h3>Idli - ₹30</h3>
+        <input type="number" name="idli" value="0" min="0">
+    </div>
+
+    <div class="card">
+        <img src="{{ url_for('static', filename='dosa.webp') }}" class="food-img">
+        <h3>Dosa - ₹50</h3>
+        <input type="number" name="dosa" value="0" min="0">
+    </div>
+
+    <div class="card">
+        <img src="{{ url_for('static', filename='samosa.jpg') }}" class="food-img">
+        <h3>Samosa - ₹20</h3>
+        <input type="number" name="samosa" value="0" min="0">
+    </div>
+
+    <div class="card">
+        <img src="{{ url_for('static', filename='biryani.jpeg') }}" class="food-img">
+        <h3>Biryani - ₹100</h3>
+        <input type="number" name="biryani" value="0" min="0">
+    </div>
+
+</section>
+
+<section class="dashboard">
+    <div class="card payment-card">
+        <h3>Select Payment Method</h3>
+
+        <select name="payment_method" required>
+            <option value="">Choose Payment</option>
+            <option value="UPI">UPI</option>
+            <option value="Card">Card</option>
+            <option value="Cash">Cash</option>
+        </select>
+
+        <button type="submit" class="cart-btn">Place Order</button>
+    </div>
+</section>
+
+</form>
+
+</body>
+</html>

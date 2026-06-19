@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lost and Found Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h2>Lost & Found Hub</h2>
+
+<div class="container">
+
+    <!-- Add Post -->
+    <div class="card">
+        <form method="POST" action="/add_lost_post">
+            
+            <label>Item Type</label>
+            <select name="type" required>
+                <option value="">Select</option>
+                <option>Lost</option>
+                <option>Found</option>
+            </select>
+
+            <label>Description</label>
+            <textarea name="description" required></textarea>
+
+            <label>Location</label>
+            <select name="location" required>
+                <option value="">Select Location</option>
+                <option>Library</option>
+                <option>CSE Block</option>
+                <option>Main Gate</option>
+                <option>Canteen</option>
+                <option>Hostel</option>
+            </select>
+
+            <button type="submit">Post</button>
+        </form>
+    </div>
+
+    <h3>Recent Posts</h3>
+
+    {% for post in posts %}
+    <div class="card">
+
+        <strong>{{ post.type }} Item</strong><br>
+        <b>Description:</b> {{ post.description }}<br>
+        <b>Location:</b> {{ post.location }}<br>
+        <small>{{ post.created_at }}</small>
+
+        <hr>
+
+        <!-- Replies -->
+        {% for r in post.replies %}
+        <div class="reply">
+            <b>Reply:</b> {{ r.reply }} <br>
+            <small>{{ r.created_at }}</small>
+        </div>
+        {% endfor %}
+
+        <!-- Add Reply -->
+        <form method="POST" action="/add_lost_reply/{{ post.id }}">
+            <textarea name="reply" placeholder="If this is yours, reply here..." required></textarea>
+            <button type="submit">Reply</button>
+        </form>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

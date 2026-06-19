@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notice Board | CAMPZEN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+    <h2>Digital Notice Board</h2>
+    <hr>
+</header>
+
+<div class="container">
+
+    <!-- Add Notice -->
+    <div class="card">
+        <h3>Add Notice</h3>
+        <form method="POST" action="/add_notice">
+            <input type="text" name="title" placeholder="Title" required><br><br>
+            <textarea name="content" placeholder="Content" required></textarea><br><br>
+            <button type="submit">Post</button>
+        </form>
+    </div>
+
+    <hr>
+
+    <!-- Display Notices -->
+
+    {% if notices and notices|length > 0 %}
+
+        {% for notice in notices %}
+        <div class="card">
+            <h3>{{ notice.title }}</h3>
+            <p>{{ notice.content }}</p>
+            <small>{{ notice.created_at }}</small>
+        </div>
+        <hr>
+        {% endfor %}
+
+    {% else %}
+
+        <!-- Default Notice 1 -->
+        <div class="card">
+            <h3>Mid-Semester Examination Schedule</h3>
+            <p>The mid-semester examinations will commence from 25th February. Students are advised to check the timetable and prepare accordingly.</p>
+            <small>College Administration</small>
+        </div>
+        <hr>
+
+        <!-- Default Notice 2 -->
+        <div class="card">
+            <h3>Annual Cultural Fest Announcement</h3>
+            <p>The Annual Cultural Fest will be held next month. Interested students can register through the student portal before the deadline.</p>
+            <small>Student Affairs Department</small>
+        </div>
+        <hr>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

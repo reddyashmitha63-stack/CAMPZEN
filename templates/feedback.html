@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Anonymous Feedback | CAMPZEN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="header">
+    <h2>Anonymous Feedback System</h2>
+    <p>Your identity will not be disclosed</p>
+</header>
+
+<section class="dashboard">
+
+    <div class="card">
+        <h3>Submit Feedback</h3>
+
+        <!-- Added action + method -->
+        <form class="feedback-form" action="/feedback" method="POST">
+            <select name="category" required>
+                <option value="">Select Category</option>
+                <option>Academics</option>
+                <option>Canteen</option>
+                <option>Infrastructure</option>
+                <option>Hostel</option>
+                <option>Other</option>
+            </select>
+
+            <textarea name="message" placeholder="Write your feedback here..." rows="5" required></textarea>
+
+            <button type="submit" class="cart-btn">Submit Feedback</button>
+        </form>
+    </div>
+
+</section>
+
+</body>
+</html>

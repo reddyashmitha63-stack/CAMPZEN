@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CAMPZEN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="login-body">
+
+    <div class="login-container">
+        <h1>CAMPZEN</h1>
+        <p class="subtitle">Smart Campus Utility & Interaction Platform</p>
+
+        <form action="/login1" method="POST">
+            <input type="email" name="email" placeholder="Enter Email" required>
+            <input type="password" name="password" placeholder="Enter Password" required>
+            <button type="submit">Login</button>
+        </form>
+
+        <p style="color: black;">
+            New user?<a href="/signup" style="color: orange;">Signup here</a>
+        </p>
+
+    </div>
+
+</body>
+</html>
